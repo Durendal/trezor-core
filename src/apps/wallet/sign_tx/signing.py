@@ -256,6 +256,8 @@ async def sign_tx(tx: SignTx, root: bip32.HDNode):
                 write_uint32(h_sign, coin.version_group_id)    # nVersionGroupId
             else:
                 write_uint32(h_sign, tx.version)               # nVersion
+            if tx.tx_time:
+                write_uint32(h_sign, tx.tx_time)               # nTime
 
             write_varint(h_sign, tx.inputs_count)
 
